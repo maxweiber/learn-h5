@@ -1,7 +1,4 @@
-
-
-
-;(function() {
+(function() {
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         var share_config = {
             general_config:{
