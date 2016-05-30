@@ -18,7 +18,7 @@ body {
 .swiper-slide {
 
     font-size: 18px;
-    background: #fff;
+    /*background: #fff;*/
     /* Center slide text vertically */
     /*text-align: center;
     display: -webkit-box;
@@ -43,7 +43,7 @@ body {
   position:absolute;
   top:0px;
   left:0px;
-  z-index:9;
+  z-index:-2;
   height:100%;
   width:100%;
   background-position: top;
@@ -55,7 +55,7 @@ body {
   position:absolute;
   top:0px;
   left:0px;
-  z-index:10;
+  z-index:-1;
   height:100%;
   width:100%;
   opacity:0;
@@ -98,6 +98,26 @@ body {
     transform: rotate(50deg);
 }
 
+.content-contain {
+  color: rgba(255, 255, 255, .5);
+  top: 60%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+.content-col {
+
+}
+.content-fir {
+  font-size: 14px;
+  display: inline-block;
+
+}
+.content-sec {
+  font-size: 22px;
+  display: inline-block;
+}
+
 .swiper-slide-active .scale {
   animation-name: scale;
   transform-origin: center;
@@ -108,22 +128,69 @@ body {
   transform-origin: center;
 }
 
+.swiper-slide-active  .fadeInDown-0 {
+  animation-name: fadeInDown-0;
+}
+
+.swiper-slide-active  .fadeInDown-40 {
+  animation-name: fadeInDown-40 ;
+}
+
+.swiper-slide-active  .fadeInScale {
+  animation-name: fadeInScale;
+}
+
+.swiper-slide-active  .fadeInScaleDown {
+  animation-name: fadeInScaleDown;
+}
+
+
 .animatedTime {
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-fill-mode: both;
+  animation-delay: .5s;
 }
 
 .animatedTime-2 {
-  animation-duration: 3s;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  animation-delay: 1.5s;
+}
+
+.animatedTime-3 {
+  animation-duration: 2s;
   animation-fill-mode: both;
   animation-delay: 1s;
 }
 
+.animatedTime-4 {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+.animatedTime-5 {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-delay: 3s;
+}
+
+.animatedTime-6 {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-delay: 4s;
+}
 .rotate {
   animation: rotating 1.2s linear infinite;
 }
 
-@-webkit-keyframes rotating {
+.flageUp {
+  animation: flageUp 1.2s linear infinite;;
+}
+
+
+
+@keyframes rotating {
   from   {
     transform: rotate(0deg);
   }
@@ -154,7 +221,7 @@ body {
   }
 }
 
-@keyframes fadeInUp {
+@keyframes flageUp {
   from {
     opacity: 0.5;
     bottom: 6%;
@@ -170,6 +237,51 @@ body {
   }
 }
 
-.fadeInUp {
-  animation: fadeInUp 1.2s linear infinite;;
+@keyframes fadeInDown-40 {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 40%, 0);
+  }
+}
+
+@keyframes fadeInScale {
+  from  {
+    opacity: 0;
+    transform:scale(1.7, 1.7);
+  }
+
+  to {
+    opacity: 1;
+    transform:scale(1, 1);
+  }
+}
+
+@keyframes fadeInDown-0 {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInScaleDown {
+  from  {
+    opacity: 0;
+    transform:scale(1.7, 1.7);
+  }
+
+  to {
+    opacity: 1;
+    transform:scale(1, 1);
+    transform: translate3d(0, 40%, 0);
+  }
 }
