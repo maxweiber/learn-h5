@@ -1,0 +1,175 @@
+
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    /*text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center; */
+
+    background-position: top;
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+
+.outwarp {
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:9;
+  height:100%;
+  width:100%;
+  background-position: top;
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
+.innerwarp {
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:10;
+  height:100%;
+  width:100%;
+  opacity:0;
+  background-position: top;
+  background-size: contain;
+  background-repeat:no-repeat;
+}
+
+.audio {
+  position: absolute;
+  right: 20px;
+  top: 7%;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  background-image: url(../images/normalmusic.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.pub-passdown {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+}
+.pub1, .pub2 {
+  position: absolute;
+  background-color: #fff;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  box-shadow: 1px -1px 1px #646464;
+}
+.pub-passdown .pub1 {
+  transform: rotate(-50deg);
+  left: -10px;
+}
+.pub-passdown .pub2 {
+    left: -2px;
+    transform: rotate(50deg);
+}
+
+.swiper-slide-active .scale {
+  animation-name: scale;
+  transform-origin: center;
+}
+
+.swiper-slide-active .fadeIn {
+  animation-name: fadeIn;
+  transform-origin: center;
+}
+
+.animatedTime {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.animatedTime-2 {
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+}
+
+.rotate {
+  animation: rotating 1.2s linear infinite;
+}
+
+@-webkit-keyframes rotating {
+  from   {
+    transform: rotate(0deg);
+  }
+
+  to  {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes scale {
+  from  {
+    transform:scale(1.5, 1.5);
+  }
+
+  to {
+    transform:scale(1, 1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0.5;
+    bottom: 6%;
+  }
+
+  50% {
+      bottom: 4.2%;
+  }
+
+  to {
+      opacity: 0;
+      bottom: 6%;
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 1.2s linear infinite;;
+}

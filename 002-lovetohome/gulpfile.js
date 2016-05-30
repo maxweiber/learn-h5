@@ -19,13 +19,13 @@
         revCollector = require('gulp-rev-collector'),
         paths = {
             root: './',
-            dist: '001-diditaxi/dist/',
-            source: '001-diditaxi/source',
-            demo: '001-diditaxi',
+            dist: 'dist/',
+            source: 'source',
+            demo: '',
         },
         template = {
             filename: 'index',
-            pkg: require('./package.json'),
+            pkg: require('../package.json'),
             banner: [
                 '/**',
                 ' * <%= pkg.name %> <%= pkg.version %>',
@@ -88,7 +88,7 @@
         return connect.server({
             root: [ paths.root ],
             livereload: true,
-            port:'3000'
+            port:'4000'
         });
     });
 
@@ -110,7 +110,7 @@
     });
 
     gulp.task('open', function () {
-        return gulp.src(paths.root).pipe(open({ uri: 'http://localhost:3000/'}));
+        return gulp.src(paths.source + '/index.html').pipe(open({ uri: 'http://localhost:4000/' + paths.source + '/index.html'}));
     });
 
     gulp.task('server', [ 'watch', 'connect', 'open' ]);
