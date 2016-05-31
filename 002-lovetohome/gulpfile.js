@@ -17,6 +17,10 @@
         htmlmin = require('gulp-htmlmin'),
         rev = require('gulp-rev'),
         revCollector = require('gulp-rev-collector'),
+        autoprefixer = require('autoprefixer'),
+        postcss = require('gulp-postcss'),
+        cssnano = require('gulp-cssnano'),
+        minifyHTML = require('gulp-minify-html'),
         paths = {
             root: './',
             dist: 'dist/',
@@ -92,7 +96,6 @@
         });
     });
 
-
     gulp.task('minifyhtml', function() {
       return gulp.src(paths.source + '/index.html')
         .pipe(htmlmin({collapseWhitespace: true}))
@@ -111,6 +114,46 @@
 
     gulp.task('open', function () {
         return gulp.src(paths.source + '/index.html').pipe(open({ uri: 'http://localhost:4000/' + paths.source + '/index.html'}));
+    });
+
+    // auto mini css
+    gulp.task('autoprefixer', function () {
+        var postcss      = require('gulp-postcss');
+        var sourcemaps   = require('gulp-sourcemaps');
+        var autoprefixer = require('autoprefixer');
+
+        return gulp.src('./source/styles/index.css')
+            .pipe(sourcemaps.init())
+            .pipe(postcss([ autoprefixer({ browsers: ['> 1%'], remove: false }) ]))
+            .pipe(minifycss())
+            .pipe(sourcemaps.write('.'))
+
+
+            .pipe(rev())
+            .pipe(gulp.dest('./source/styles/'))
+            .pipe(rev.manifest())
+            .pipe(gulp.dest('./source/styles/rev'));
+
+            // .pipe(rename({suffix: '.min'}))
+
+            // .pipe(gulp.dest('./source/styles/'));
+
+            // gulp.src(['./source/styles/rev/*.json', './source/index.html'])
+            // .pipe(revCollector())
+            // .pipe(rename({suffix: '.min'}))
+            // .pipe(gulp.dest('./source/'));
+
+    });
+
+    gulp.task('rev', function () {
+        return gulp.src(['./source/styles/rev/*.json', './source/index.html'])
+            .pipe(revCollector())
+            .pipe( minifyHTML({
+                empty:true,
+                spare:true
+            }) )
+            .pipe(rename({suffix: '.min'}))
+            .pipe(gulp.dest('./source/'));
     });
 
     gulp.task('server', [ 'watch', 'connect', 'open' ]);
