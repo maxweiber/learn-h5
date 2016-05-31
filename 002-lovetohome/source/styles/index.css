@@ -16,7 +16,6 @@ body {
     height: 100%;
 }
 .swiper-slide {
-
     font-size: 18px;
     /*background: #fff;*/
     /* Center slide text vertically */
@@ -59,6 +58,18 @@ body {
   height:100%;
   width:100%;
   opacity:0;
+  background-position: top;
+  background-size: contain;
+  background-repeat:no-repeat;
+}
+
+.backgroundwarp {
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:-1;
+  height:100%;
+  width:100%;
   background-position: top;
   background-size: contain;
   background-repeat:no-repeat;
@@ -111,11 +122,52 @@ body {
 .content-fir {
   font-size: 14px;
   display: inline-block;
+  opacity: 0;
 
 }
 .content-sec {
   font-size: 22px;
   display: inline-block;
+  opacity: 0;
+}
+.topImage {
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 20%;
+  opacity: 0;
+  transform:scale(1.5, 1.5);
+}
+.swiper-slide-active .topImage-active {
+  opacity: 1;
+  transform: scale(0.8, 0.8) !important;
+  transition-property: transform opacity;
+  transition-duration:2s, 4s;
+  transition-timing-function:ease-in;
+  transition-delay:0;
+}
+.centerImage {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 70%;
+  margin-top: -50px;
+  left: 50%;
+  margin-left: -50px;
+  opacity: 0;
+}
+.firpage-text-contain {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.firpage-text {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 .swiper-slide-active .scale {
@@ -144,6 +196,9 @@ body {
   animation-name: fadeInScaleDown;
 }
 
+.swiper-slide-active .flipInX {
+  animation-name: flipInX;
+}
 
 .animatedTime {
   animation-duration: 3s;
@@ -167,19 +222,26 @@ body {
   animation-duration: 2s;
   animation-fill-mode: both;
   animation-delay: 2s;
+  animation-timing-function: ease-in-out;
 }
 
 .animatedTime-5 {
   animation-duration: 2s;
   animation-fill-mode: both;
-  animation-delay: 3s;
+  animation-delay: 4s;
+  animation-timing-function: ease-in-out;
 }
 
 .animatedTime-6 {
   animation-duration: 2s;
   animation-fill-mode: both;
-  animation-delay: 4s;
+  animation-delay: 5s;
 }
+.animatedTime-01 {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
 .rotate {
   animation: rotating 1.2s linear infinite;
 }
@@ -285,3 +347,32 @@ body {
     transform: translate3d(0, 40%, 0);
   }
 }
+
+@keyframes flipInX {
+
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+  }
+
+  to {
+    transform: perspective(400px);
+    opacity: 1;
+  }
+}
+
