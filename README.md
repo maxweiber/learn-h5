@@ -8,6 +8,14 @@
 
 **占坑，过两天写**
 
+#### 1 使用swiper组件
+
+#### 2 audio标签使用
+
+#### 3 css3 key-frame属性
+
+#### 4 css3 transform属性
+
 
 ### Demo
 
